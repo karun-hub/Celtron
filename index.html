@@ -2,16 +2,10 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>ComingSoon - Bootstrap Coming Soon Template</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
@@ -180,11 +174,11 @@
           </div>
 
         </div>
-
       </div>
     </section><!-- End Contact Us Section -->
 
   </main><!-- End #main -->
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { window.location.reload(); }"></iframe>
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
@@ -211,25 +205,23 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
-    $(document).ready(function() {
-        $("#gform").submit(function(e) {
-            e.preventDefault();
-            $.ajax({
-                url: "https://script.google.com/macros/s/AKfycbww3zz8gjTHqp6O1c-YJk7-KmKPkwXFrg7nk59gVaRFki7mU8Olw4USMDhgJpjghVgw/exec",
-                data: $("#gform").serialize(),
-                method: "POST",
-                success: function(response) {
-                    alert("Form submitted successfully");
-                    window.location.reload();
-                    //window.location.href="https://google.com"
-                },
-                error: function(err) {
-                    console.error("Error:", err); // Log the error object to the console
-                    alert("Something went wrong. Check the console for more details.");
-                }
-            });
-        });
-    });
+    $("#gform").submit((e)=>{
+        e.preventDefault()
+        $.ajax({
+            url:"https://script.google.com/macros/s/AKfycbyZhZEKUMKfry0Xh2dOaB55OgYnpkyCgDu6R4vo3p9yxpX7duJP8pMy2q763I3pzqc8/exec",
+            data:$("#gform").serialize(),
+            method:"post",
+            success:function (response){
+                alert("Form submitted successfully")
+                window.location.reload()
+                //window.location.href="https://google.com"
+            },
+            error:function (err){
+                alert("Something Error"+ err)
+
+            }
+        })
+    })
 </script>
 
 </body>
