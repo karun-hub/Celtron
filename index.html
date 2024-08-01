@@ -11,9 +11,10 @@
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -37,6 +38,7 @@
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex flex-column align-items-center">
       <img src="assets/img/logo1.png" alt="" style="max-width: 54%;">
+      <br>
       <h1>ComingSoon</h1>
       <h2>We're working hard to improve our website and we'll ready to launch after</h2>
       <div class="countdown d-flex justify-content-center" data-count="2024/08/25">
@@ -60,7 +62,7 @@
 
       <div class="subscribe">
         <h4>Subscribe now to get the latest updates!</h4>
-        <form action="forms/notify.php" method="post" role="form" class="php-email-form">
+        <form action="" method="post" role="form" class="php-email-form">
           <div class="subscribe-form">
             <input type="email" name="email"><input type="submit" value="Subscribe">
           </div>
@@ -153,7 +155,7 @@
 
         <div class="row justify-content-center">
           <div class="col-lg-10">
-            <form action="https://karun-hub.github.io/Celtron/forms/contact.php" method="post" role="form" class="php-email-form">
+            <form id="gform" action=""  class="php-email-form">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -208,6 +210,27 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+    $(document).ready(function() {
+        $("#gform").submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: "https://script.google.com/macros/s/AKfycbww3zz8gjTHqp6O1c-YJk7-KmKPkwXFrg7nk59gVaRFki7mU8Olw4USMDhgJpjghVgw/exec",
+                data: $("#gform").serialize(),
+                method: "POST",
+                success: function(response) {
+                    alert("Form submitted successfully");
+                    window.location.reload();
+                    //window.location.href="https://google.com"
+                },
+                error: function(err) {
+                    console.error("Error:", err); // Log the error object to the console
+                    alert("Something went wrong. Check the console for more details.");
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 
